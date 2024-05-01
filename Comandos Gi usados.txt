@@ -3,3 +3,6 @@ git add .
 git commit -m "Inicial"
 git checkout -b main
 git remote add origen https://github.com/Joyberibero/Torneo.git
+git pull origin main
+git config --global user.email jberna16@ibero.edu.co
+git config --global user.name Joyberibero

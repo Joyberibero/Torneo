@@ -48,7 +48,6 @@ db.TablaPosiciones.find().sort({ PTS: 1 }).limit(1)
 db.TablaPosiciones.updateMany({}, { $inc: { PTS: 10 } });
 
 // quirtar puntos
-// Supongamos que quieres quitar 5 puntos al equipo con nombre "Equipo B"
 db.TablaPosiciones.updateOne({Equipo: "Atletico Nacional" }, { $inc: { PTS: -3 } });
 
 //Cambiar entrenador

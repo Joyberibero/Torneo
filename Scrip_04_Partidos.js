@@ -17,7 +17,6 @@ for (var i = 0; i < equipos.length; i++) {
     var partidosJugados = []; // Almacenar los equipos con los que ya ha jugado este equipo en esta ronda
     var partidosPorEquipo = 0;
     
-    
     while (partidosPorEquipo < 4) {
         var ronda = [];
         for (var j = 0; j < equipos.length / 2; j++) {
@@ -35,12 +34,12 @@ for (var i = 0; i < equipos.length; i++) {
                     id_Partido: i * (equipos.length / 2) + j + 1,
                     fecha: new Date("2024-05-1" + (i + 1)), 
                     equipos: [local, visitante],
+                    Anfitrion : local,
                     visitante: visitante,
                     resultado: resultado,
                     estadioLocal: estadioLocal,
                     paisLocal: paisLocal,
-                    arbitro: arbitroSeleccionado,
-                    local: local
+                    arbitro: arbitroSeleccionado
                 });
                 partidosJugados.push(visitante);
                 partidosPorEquipo++;
@@ -52,6 +51,7 @@ for (var i = 0; i < equipos.length; i++) {
         db.Partidos.insertMany(ronda);
     }
 }
+
 
 // Verificar que se hayan insertado los partidos correctamente
 db.Partidos.find();

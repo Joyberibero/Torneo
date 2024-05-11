@@ -1,7 +1,10 @@
-//Elimina la coleccion para volver a generar la estadistica.
-db.TablaPosiciones.drop()
-// Calcula los resultados de los partidos y actualiza coleccion TablaPosiciones
+// Elimina la colección para volver a generar la estadística.
+db.TablaPosiciones.drop();
+
+// Objeto para almacenar la tabla de posiciones
 var tablaPosiciones = {};
+
+// Calcula los resultados de los partidos y actualiza la colección TablaPosiciones
 db.Partidos.find().forEach(function(partido) {
     // Actualiza las estadísticas del equipo local
     if (!tablaPosiciones[partido.local]) {
@@ -60,7 +63,7 @@ db.Partidos.find().forEach(function(partido) {
 
 // Inserta los datos en la colección Tabla de Posiciones
 for (var equipo in tablaPosiciones) {
-    if (equipo !== 'undefined') {
+    if (equipo !== 'undefined') { // Asegura que el equipo no sea 'undefined'
         db.TablaPosiciones.insertOne({
             Equipo: equipo,
             PJ: tablaPosiciones[equipo].PJ,
@@ -75,9 +78,5 @@ for (var equipo in tablaPosiciones) {
     }
 }
 
-
-//db.TablaPosiciones.find()
-//Mostar coleccion de forma desendente
-db.TablaPosiciones.find().sort({ PTS: -1 })
-
-
+// Mostrar colección de forma descendente según los puntos (PTS)
+db.TablaPosiciones.find().sort({ PTS: -1 });
